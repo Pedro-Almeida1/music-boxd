@@ -4,4 +4,18 @@
   <artifactId>musicboxd</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>MusicBoxd</name>
+  
+  <build>
+    <plugins>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.1.0</version>
+            <configuration>
+                <mainClass>br.com.musicboxd.App</mainClass>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
 </project>
