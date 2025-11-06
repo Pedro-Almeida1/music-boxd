@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\fatec\LPnoite"/>
 			<item value="C:\Users\pedro\eclipse-workspace\Projeto"/>
 		</list>
 		<list key="projectNameTemplate">
