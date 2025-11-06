@@ -47,9 +47,9 @@ public class TelaLogin {
 		String senha = new String(txtSenha.getPassword());
 		
 		if (nome.equals("admin") && senha.equals("123")) {
-			JOptionPane.showMessageDialog(null, "Login correto! Bem vindo " + nome, "Login correto!", 0);
+			JOptionPane.showMessageDialog(null, "Login correto! Bem vindo " + nome, "Login correto!", JOptionPane.INFORMATION_MESSAGE);
 		} else {
-			JOptionPane.showMessageDialog(null, "Login incorreto!", "Erro ao realizar login", 1);
+			JOptionPane.showMessageDialog(null, "Login incorreto!", "Erro ao realizar login", 0);
 		}
 	}
 
@@ -79,14 +79,11 @@ public class TelaLogin {
 		txtNome.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
-		btnLogin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				autenticar();
-			}
-		});
+		btnLogin.addActionListener(e -> autenticar());
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnLogin.setBounds(41, 149, 113, 29);
 		frame.getContentPane().add(btnLogin);
 		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtNome, txtSenha, btnLogin}));
+		frame.getRootPane().setDefaultButton(btnLogin);
 	}
 }
