@@ -21,7 +21,7 @@ public class HibernateUtil {
 	            config.setProperty("hibernate.connection.password", 
 	                System.getenv("MYSQL_PASSWORD"));
 	            
-	            config.addAnnotatedClass(Usuario.class);
+//	            config.addAnnotatedClass(Usuario.class);
 
 	            return config.buildSessionFactory();
 	        } catch (Exception e) {
