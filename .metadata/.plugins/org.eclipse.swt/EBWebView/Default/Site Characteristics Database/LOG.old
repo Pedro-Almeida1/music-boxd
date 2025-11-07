@@ -1,5 +1,0 @@
-2025/11/05-23:13:41.208 3b90 Log #3: 2 ops saved to Table #4 OK
-2025/11/05-23:13:41.211 3b90 Archiving D:\fatec\LPnoite\music-boxd2\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000003.log: OK
-2025/11/05-23:13:41.211 3b90 Table #4: 2 entries OK
-2025/11/05-23:13:41.212 3b90 Archiving D:\fatec\LPnoite\music-boxd2\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001: OK
-2025/11/05-23:13:41.221 3b90 **** Repaired leveldb D:\fatec\LPnoite\music-boxd2\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database; recovered 1 files; 191 bytes. Some data may have been lost. ****

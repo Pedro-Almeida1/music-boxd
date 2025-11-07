@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 
 public class TelaLogin {
 
-	private JFrame frame;
+	private JFrame frmLogin;
 	private JPasswordField txtSenha;
 	private JTextField txtNome;
 
@@ -29,7 +29,7 @@ public class TelaLogin {
 			public void run() {
 				try {
 					TelaLogin window = new TelaLogin();
-					window.frame.setVisible(true);
+					window.frmLogin.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,51 +39,67 @@ public class TelaLogin {
 
 	public TelaLogin() {
 		initialize();
-		this.frame.setVisible(true);
+		this.frmLogin.setVisible(true);
 	}
 	
 	void autenticar() {
 		String nome = txtNome.getText();
 		String senha = new String(txtSenha.getPassword());
 		
+		if (nome.equals("") || senha.equals("")) {
+			JOptionPane.showInternalMessageDialog(null, "Informe o login e senha!", "Login e senha precisam ser fornecidos", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		if (nome.equals("admin") && senha.equals("123")) {
 			JOptionPane.showMessageDialog(null, "Login correto! Bem vindo " + nome, "Login correto!", JOptionPane.INFORMATION_MESSAGE);
 		} else {
-			JOptionPane.showMessageDialog(null, "Login incorreto!", "Erro ao realizar login", 0);
+			JOptionPane.showMessageDialog(null, "Login incorreto!", "Erro ao realizar login", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 221, 252);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmLogin = new JFrame();
+		frmLogin.setTitle("Login");
+		frmLogin.setBounds(100, 100, 233, 246);
+		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmLogin.getContentPane().setLayout(null);
 		
 		JLabel lblNome = new JLabel("Nome:");
 		lblNome.setBounds(10, 36, 75, 20);
 		lblNome.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		frame.getContentPane().add(lblNome);
+		frmLogin.getContentPane().add(lblNome);
 		
 		JLabel lblSenha = new JLabel("Senha:");
 		lblSenha.setBounds(10, 79, 75, 20);
 		lblSenha.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		frame.getContentPane().add(lblSenha);
+		frmLogin.getContentPane().add(lblSenha);
 		
 		txtSenha = new JPasswordField();
 		txtSenha.setBounds(69, 82, 113, 19);
-		frame.getContentPane().add(txtSenha);
+		frmLogin.getContentPane().add(txtSenha);
 		
 		txtNome = new JTextField();
 		txtNome.setBounds(69, 39, 113, 19);
-		frame.getContentPane().add(txtNome);
+		frmLogin.getContentPane().add(txtNome);
 		txtNome.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(e -> autenticar());
 		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		btnLogin.setBounds(41, 149, 113, 29);
-		frame.getContentPane().add(btnLogin);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtNome, txtSenha, btnLogin}));
-		frame.getRootPane().setDefaultButton(btnLogin);
+		btnLogin.setBounds(41, 122, 141, 29);
+		frmLogin.getContentPane().add(btnLogin);
+		frmLogin.getRootPane().setDefaultButton(btnLogin); // Botão login sempre acionado ao apertar enter
+		
+		JButton btnCadastro = new JButton("Cadastrar-se");
+		btnCadastro.addActionListener(e -> {
+			new TelaCadastro();
+			frmLogin.dispose();
+		});
+		btnCadastro.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCadastro.setBounds(41, 161, 141, 29);
+		frmLogin.getContentPane().add(btnCadastro);
+		frmLogin.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtNome, txtSenha, btnLogin, btnCadastro}));
+		frmLogin.setLocationRelativeTo(null);
 	}
 }

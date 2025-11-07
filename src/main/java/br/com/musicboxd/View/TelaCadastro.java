@@ -29,6 +29,7 @@ public class TelaCadastro {
 	 */
 	public TelaCadastro() {
 		initialize();
+		this.frame.setVisible(true);
 	}
 
 	/**
