@@ -19,5 +19,14 @@ public class Artista {
             }
         }
     }
+
+      void removerMusicas(String musica){
+        if(musicas.contains(musica)){
+            musicas.remove(musica);
+            System.out.println("Musica removida com sucesso");
+        }else{
+            System.out.println("A musica não foi encontrada na lista");
+        }
+    }
 }
 
