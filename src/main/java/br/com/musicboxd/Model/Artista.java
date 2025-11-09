@@ -1,32 +1,42 @@
 package br.com.musicboxd.Model;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Artista {
-    String nome;
-    ArrayList<String> musicas = new ArrayList<>();
+    protected String nome;
+    protected List<Musica> musicas = new ArrayList<Musica>();
+    protected String generoMusical;
 
-    void adicionarMusica(String musica) {
-        musicas.add(musica);
-    }
+//    void adicionarMusica(Musica musica) {
+//        musicas.add(musica);
+//    }
 
-    void verMusicas() {
+    public void verMusicas() {
         System.out.println("Músicas de " + nome + ":");
         if (musicas.isEmpty()) {
             System.out.println("(Nenhuma música cadastrada)");
         } else {
-            for (String m : musicas) {
-                System.out.println("- " + m);
+            for (Musica m : musicas) {
+                System.out.println(" - " + m.toString());
             }
         }
     }
 
-      void removerMusicas(String musica){
+      public void removerMusicas(Musica musica){
         if(musicas.contains(musica)){
             musicas.remove(musica);
             System.out.println("Musica removida com sucesso");
-        }else{
+        } else {
             System.out.println("A musica não foi encontrada na lista");
         }
+    }
+      
+    public String getNome() {
+    	return nome;
+    }
+    
+    public String getGeneroMusical() {
+    	return generoMusical;
     }
 }
 
