@@ -12,8 +12,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaLogin {
 

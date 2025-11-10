@@ -1,8 +1,5 @@
 package br.com.musicboxd;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 import javax.swing.SwingUtilities;
 
 import br.com.musicboxd.View.TelaLogin;
