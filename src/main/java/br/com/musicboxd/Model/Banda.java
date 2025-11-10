@@ -1,16 +1,23 @@
 package br.com.musicboxd.Model;
 
-public class Banda {
-    private String nome;
-    //private String integrantes;
-    private String generoMusical;
-    private String paisOrigem; 
+import java.util.ArrayList;
 
+public class Banda extends Artista{
+    private String descricao; 
 
-    public Banda(String nome, String genero, String paisOrigem){
-        this.nome = "nome";
-        //this.integrantes = "cantor1";
-        this.generoMusical = "genero";
-        this.paisOrigem = "país padrão";
+    public Banda(String nome, String generoMusical, String descricao){
+        this.nome = nome;
+    	this.generoMusical = generoMusical;
+        this.descricao = descricao;
+        this.musicas = new ArrayList<Musica>();
     }
+    
+    public String getDescricao() {
+    	return descricao;
+    }
+    
+    public void setDescricao(String descricao) {
+    	this.descricao = descricao;
+    }
+
 }

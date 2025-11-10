@@ -40,6 +40,6 @@ public class Musica {
             soma += a.getNota();
         }
         return soma / avaliacoes.size();
-    }
+    } 
 
 }
