@@ -8,11 +8,11 @@ public class Musica {
     private String titulo;
     private int anoLancamento;
     private String genero;
-    private double duracaoMinutos;
+    private int duracaoMinutos;
 
     private List<Avaliacao> avaliacoes = new ArrayList<>();
 
-    public Musica(String titulo, String musico, int anoLancamento, String genero, double duracao) {
+    public Musica(String titulo, String musico, int anoLancamento, String genero, int duracao) {
         this.titulo = titulo;
         this.anoLancamento = anoLancamento;
         this.genero = genero;
@@ -26,7 +26,7 @@ public class Musica {
                 + "Nome:           	%s\n"
                 + "Lançamento:		%d\n"
                 + "Gênero:			%s\n"
-                + "duração:	%.2f\n",
+                + "duração:	%d\n",
                 titulo, anoLancamento, genero, duracaoMinutos
         );
     }
