@@ -36,7 +36,7 @@ public class Musica {
 
     public Musica() {}
 
-    public Musica(String titulo, String musico, int anoLancamento, String genero, int duracao) {
+    public Musica(String titulo, int anoLancamento, String genero, int duracao) {
         this.titulo = titulo;
         this.anoLancamento = anoLancamento;
         this.genero = genero;
