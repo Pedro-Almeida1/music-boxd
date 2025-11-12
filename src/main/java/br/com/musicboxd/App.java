@@ -9,10 +9,11 @@ public class App {
     public static void main(String[] args) {
         System.out.println("🚀 Aplicação iniciada!");
         
-        HibernateUtil.getSessionFactory();
+       // HibernateUtil.getSessionFactory();
         
         SwingUtilities.invokeLater(() -> {
-            new TelaLogin();
+        	new TelaCadastroMusica();
+           // new TelaLogin();
         });
     }
 }
