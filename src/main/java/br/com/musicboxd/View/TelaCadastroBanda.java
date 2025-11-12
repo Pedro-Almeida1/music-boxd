@@ -8,6 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import br.com.musicboxd.DAO.ArtistaDAO.BandaDAO;
+import br.com.musicboxd.model.artistas.Banda;
+
 import java.awt.Font;
 
 public class TelaCadastroBanda {
@@ -48,6 +52,27 @@ public class TelaCadastroBanda {
 
 		if((textoNome.equals("")) || (textoGenero.equals("")) || (textoDescricao.equals(""))){
 			JOptionPane.showInternalMessageDialog(null, "Informe os dados para cadastro", "Todos os dados solicitados devem ser informados para cadastrar", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		Banda banda = new Banda(textoNome, textoGenero, textoDescricao);
+		try {
+			BandaDAO bandaDAO = new BandaDAO();
+			
+			if (bandaDAO.existePorNome(textoNome)) {
+				JOptionPane.showMessageDialog(null, "Banda já cadastrada!",
+						"Erro no cadastro de banda", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			bandaDAO.salvar(banda);
+			JOptionPane.showMessageDialog(null, "Cadastro da banda " + banda.getNome() + " realizado com sucesso!",
+					"Cadastro de banda concluído", JOptionPane.INFORMATION_MESSAGE);
+			nome.setText("");
+			genero.setText("");
+			descricao.setText("");
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro ao cadastrar banda! Tente novamente mais tarde",
+					"Erro no cadastro de banda", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 

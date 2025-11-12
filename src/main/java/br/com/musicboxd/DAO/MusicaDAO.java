@@ -16,10 +16,9 @@ public class MusicaDAO extends GenericDAO<Musica> {
 
     public List<Musica> buscarPorNome(String nome) {
         try (Session sessao = HibernateUtil.getSessionFactory().openSession()) {
-            Query<Musica> query = sessao.createQuery("FROM Musica m WHERE m.nome LIKE :nome", Musica.class);
+            Query<Musica> query = sessao.createQuery("FROM Musica m WHERE LOWER(m.nome) LIKE LOWER(:nome)", Musica.class);
             query.setParameter("nome", "%" + nome + "%");
             return query.list();
         }
     }
-    
 }

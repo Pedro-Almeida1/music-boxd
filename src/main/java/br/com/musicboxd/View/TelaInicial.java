@@ -1,17 +1,11 @@
 package br.com.musicboxd.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JTextField;
-
 import br.com.musicboxd.model.Usuario;
 
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaInicial {
 

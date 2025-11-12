@@ -5,7 +5,7 @@ import br.com.musicboxd.model.artistas.Banda;
 
 public class BandaDAO extends GenericDAO<Banda> {
 
-    public BandaDAO(Class<Banda> entidade) {
+    public BandaDAO() {
         super(Banda.class);
     }
     

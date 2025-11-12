@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import br.com.musicboxd.config.HibernateUtil;
+import br.com.musicboxd.model.Musica;
 
 public class GenericDAO<T> {
 
@@ -52,6 +53,17 @@ public class GenericDAO<T> {
         try (Session sessao = HibernateUtil.getSessionFactory().openSession()) {
             Query<T> query = sessao.createQuery("FROM " + entidade.getSimpleName(), entidade);
             return query.list();
+        }
+    }
+    
+    public boolean existePorNome(String nome) {
+        try (Session sessao = HibernateUtil.getSessionFactory().openSession()) {
+        	String coluna = entidade == Musica.class ? "titulo" : "nome";
+            Long count = sessao
+            		.createQuery("SELECT COUNT(m) FROM " + entidade.getSimpleName() + " m WHERE LOWER(m." + coluna + ") LIKE LOWER(:nome)", Long.class)
+            		.setParameter("nome", "%" + nome + "%")
+            		.uniqueResult();
+            return count != null && count > 0;
         }
     }
 }
