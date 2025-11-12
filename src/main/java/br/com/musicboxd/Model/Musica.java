@@ -1,11 +1,11 @@
-package br.com.musicboxd.Model;
+package br.com.musicboxd.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.musicboxd.Model.artistas.Artista;
-import br.com.musicboxd.Model.avaliacoes.Avaliacao;
-import br.com.musicboxd.Model.avaliacoes.AvaliacaoMusica;
+import br.com.musicboxd.model.artistas.Artista;
+import br.com.musicboxd.model.avaliacoes.Avaliacao;
+import br.com.musicboxd.model.avaliacoes.AvaliacaoMusica;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

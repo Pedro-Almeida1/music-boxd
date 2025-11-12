@@ -1,7 +1,7 @@
-package br.com.musicboxd.Model.avaliacoes;
+package br.com.musicboxd.model.avaliacoes;
 
-import br.com.musicboxd.Model.Usuario;
-import br.com.musicboxd.Model.artistas.Banda;
+import br.com.musicboxd.model.Usuario;
+import br.com.musicboxd.model.artistas.Banda;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;

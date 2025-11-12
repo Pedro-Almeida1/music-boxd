@@ -1,4 +1,4 @@
-package br.com.musicboxd.View;
+package br.com.musicboxd.view;
 
 import java.awt.EventQueue;
 
@@ -11,6 +11,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import br.com.musicboxd.DAO.UsuarioDAO;
+import br.com.musicboxd.model.Usuario;
+
 import java.awt.Component;
 
 public class TelaLogin {
@@ -48,8 +52,12 @@ public class TelaLogin {
 			JOptionPane.showInternalMessageDialog(null, "Informe o login e senha!", "Login e senha precisam ser fornecidos", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
+
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Usuario usuarioBD = usuarioDAO.buscarPorNomeESenha(nome, senha);
 		
-		if (nome.equals("admin") && senha.equals("123")) {
+		// if (nome.equals("admin") && senha.equals("123")) {
+		if (usuarioBD != null) {
 			JOptionPane.showMessageDialog(null, "Login correto! Bem vindo " + nome, "Login correto!", JOptionPane.INFORMATION_MESSAGE);
 		} else {
 			JOptionPane.showMessageDialog(null, "Login incorreto!", "Erro ao realizar login", JOptionPane.ERROR_MESSAGE);
