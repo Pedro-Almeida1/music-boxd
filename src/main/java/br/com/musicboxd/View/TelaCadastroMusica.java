@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 
 import javax.swing.JTextField;
 
+import br.com.musicboxd.DAO.MusicaDAO;
 import br.com.musicboxd.model.Musica;
 
 import javax.swing.JButton;
@@ -108,7 +109,21 @@ public class TelaCadastroMusica {
 
 					Musica musicanova = new Musica(titulo, ano, genero, duracao);
 					
+					MusicaDAO musicaDAO = new MusicaDAO();
+					
+					if (musicaDAO.existePorNome(musicanova.getTitulo())) {
+						JOptionPane.showMessageDialog(null, "Música já cadastrada!",
+								"Erro no cadastro de música", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					
+					musicaDAO.salvar(musicanova);
 					JOptionPane.showMessageDialog(null, "Música cadastrada com sucesso!\n" + "Título: " + titulo);
+					
+					txtTitulo.setText("");
+					txtGenero.setText("");
+					txtAnoDeLancamento.setText("");
+					txtDuracao.setText("");
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Erro: ano e duração devem ser números!");
 				}
