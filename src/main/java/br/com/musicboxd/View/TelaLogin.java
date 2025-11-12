@@ -58,6 +58,8 @@ public class TelaLogin {
 		
 		if (usuarioBD != null) {
 			JOptionPane.showMessageDialog(null, "Login correto! Bem vindo, " + usuarioBD.getNome(), "Login correto!", JOptionPane.INFORMATION_MESSAGE);
+			new TelaInicial(usuarioBD);
+			frmLogin.dispose();
 		} else {
 			JOptionPane.showMessageDialog(null, "Login incorreto!", "Erro ao realizar login", JOptionPane.ERROR_MESSAGE);
 		}

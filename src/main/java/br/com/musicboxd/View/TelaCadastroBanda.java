@@ -38,6 +38,7 @@ public class TelaCadastroBanda {
 	 */
 	public TelaCadastroBanda() {
 		initialize();
+		this.frame.setVisible(true);
 	}
 
 	void realizarCadastro(){

@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class TelaMusicasDisponiveis {
+public class TelaCantoresDisponiveis {
 
 	private JFrame frame;
 
@@ -15,7 +15,7 @@ public class TelaMusicasDisponiveis {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaMusicasDisponiveis window = new TelaMusicasDisponiveis();
+					TelaCantoresDisponiveis window = new TelaCantoresDisponiveis();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -27,7 +27,7 @@ public class TelaMusicasDisponiveis {
 	/**
 	 * Create the application.
 	 */
-	public TelaMusicasDisponiveis() {
+	public TelaCantoresDisponiveis() {
 		initialize();
 		this.frame.setVisible(true);
 	}

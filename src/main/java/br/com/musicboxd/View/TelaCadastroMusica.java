@@ -46,6 +46,7 @@ public class TelaCadastroMusica {
 	 */
 	public TelaCadastroMusica() {
 		initialize();
+		this.frmCadastrarMsica.setVisible(true);
 	}
 
 	/**
