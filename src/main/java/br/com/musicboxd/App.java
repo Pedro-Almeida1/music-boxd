@@ -2,9 +2,8 @@ package br.com.musicboxd;
 
 import javax.swing.SwingUtilities;
 
-import br.com.musicboxd.View.TelaCadastroMusica;
-import br.com.musicboxd.View.TelaLogin;
 import br.com.musicboxd.config.HibernateUtil;
+import br.com.musicboxd.view.TelaLogin;
 
 public class App {
     public static void main(String[] args) {
@@ -13,8 +12,8 @@ public class App {
        // HibernateUtil.getSessionFactory();
         
         SwingUtilities.invokeLater(() -> {
-        	new TelaCadastroMusica();
-           // new TelaLogin();
+        	// new TelaCadastroMusica();
+           new TelaLogin();
         });
     }
 }

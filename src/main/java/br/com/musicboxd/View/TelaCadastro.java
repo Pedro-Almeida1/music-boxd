@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 package br.com.musicboxd.View;
 import br.com.musicboxd.Model.Usuario;
 import br.com.musicboxd.View.TelaLogin;
+=======
+package br.com.musicboxd.view;
+>>>>>>> 9391cfbf60453aba81f08fa2022226dedd4cbd7e
 
 import java.awt.EventQueue;
 

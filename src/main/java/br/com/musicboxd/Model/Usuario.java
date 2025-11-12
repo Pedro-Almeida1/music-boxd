@@ -1,4 +1,4 @@
-package br.com.musicboxd.Model;
+package br.com.musicboxd.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

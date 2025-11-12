@@ -1,4 +1,4 @@
-package br.com.musicboxd.View;
+package br.com.musicboxd.view;
 
 import java.awt.EventQueue;
 

@@ -3,15 +3,15 @@ package br.com.musicboxd.config;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import br.com.musicboxd.Model.Musica;
-import br.com.musicboxd.Model.Usuario;
-import br.com.musicboxd.Model.artistas.Artista;
-import br.com.musicboxd.Model.artistas.Banda;
-import br.com.musicboxd.Model.artistas.Cantor;
-import br.com.musicboxd.Model.avaliacoes.Avaliacao;
-import br.com.musicboxd.Model.avaliacoes.AvaliacaoBanda;
-import br.com.musicboxd.Model.avaliacoes.AvaliacaoCantor;
-import br.com.musicboxd.Model.avaliacoes.AvaliacaoMusica;
+import br.com.musicboxd.model.Musica;
+import br.com.musicboxd.model.Usuario;
+import br.com.musicboxd.model.artistas.Artista;
+import br.com.musicboxd.model.artistas.Banda;
+import br.com.musicboxd.model.artistas.Cantor;
+import br.com.musicboxd.model.avaliacoes.Avaliacao;
+import br.com.musicboxd.model.avaliacoes.AvaliacaoBanda;
+import br.com.musicboxd.model.avaliacoes.AvaliacaoCantor;
+import br.com.musicboxd.model.avaliacoes.AvaliacaoMusica;
 
 public class HibernateUtil {
 	private static final SessionFactory sessionFactory = buildSessionFactory();
