@@ -56,9 +56,8 @@ public class TelaLogin {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		Usuario usuarioBD = usuarioDAO.buscarPorNomeESenha(nome, senha);
 		
-		// if (nome.equals("admin") && senha.equals("123")) {
 		if (usuarioBD != null) {
-			JOptionPane.showMessageDialog(null, "Login correto! Bem vindo " + nome, "Login correto!", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Login correto! Bem vindo, " + usuarioBD.getNome(), "Login correto!", JOptionPane.INFORMATION_MESSAGE);
 		} else {
 			JOptionPane.showMessageDialog(null, "Login incorreto!", "Erro ao realizar login", JOptionPane.ERROR_MESSAGE);
 		}
