@@ -3,16 +3,40 @@ package br.com.musicboxd.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Musica {
+import br.com.musicboxd.Model.artistas.Artista;
+import br.com.musicboxd.Model.avaliacoes.Avaliacao;
+import br.com.musicboxd.Model.avaliacoes.AvaliacaoMusica;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "musicas")
+public class Musica {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String titulo;
     private int anoLancamento;
     private String genero;
     private int duracaoMinutos;
 
-    private List<Avaliacao> avaliacoes = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "artista_id")
+    private Artista artista;
 
-    public Musica(String titulo, String musico, int anoLancamento, String genero, int duracao) {
+    @OneToMany(mappedBy = "musica", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AvaliacaoMusica> avaliacoes = new ArrayList<>();
+
+    public Musica() {}
+
+    public Musica(String titulo, int anoLancamento, String genero, int duracao) {
         this.titulo = titulo;
         this.anoLancamento = anoLancamento;
         this.genero = genero;
@@ -23,12 +47,11 @@ public class Musica {
     public String toString() {
         return String.format(
                 "Informações sobre a música\n"
-                + "Nome:           	%s\n"
-                + "Lançamento:		%d\n"
-                + "Gênero:			%s\n"
-                + "duração:	%d\n",
-                titulo, anoLancamento, genero, duracaoMinutos
-        );
+                        + "Nome:           	%s\n"
+                        + "Lançamento:		%d\n"
+                        + "Gênero:			%s\n"
+                        + "duração:	%d\n",
+                titulo, anoLancamento, genero, duracaoMinutos);
     }
 
     public double calcularMediaAvaliacoes() {
@@ -40,6 +63,6 @@ public class Musica {
             soma += a.getNota();
         }
         return soma / avaliacoes.size();
-    } 
+    }
 
 }
