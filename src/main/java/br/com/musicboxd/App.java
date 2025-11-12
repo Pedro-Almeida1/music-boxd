@@ -12,8 +12,8 @@ public class App {
        // HibernateUtil.getSessionFactory();
         
         SwingUtilities.invokeLater(() -> {
-        	new TelaCadastroMusica();
-           // new TelaLogin();
+        	// new TelaCadastroMusica();
+           new TelaLogin();
         });
     }
 }
