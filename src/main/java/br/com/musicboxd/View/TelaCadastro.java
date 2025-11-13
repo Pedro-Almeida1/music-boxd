@@ -17,11 +17,12 @@ import java.awt.event.ActionEvent;
 public class TelaCadastro {
 
 	private JFrame frame;
-	private JTextField email;
-	private JTextField senha;
-	private JTextField nome;
+	private JTextField lblEmail;
+	private JTextField lblSenha;
+	private JTextField lblNome;
 	private JTextField textField;
-
+	private JTextField lblConfirma;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -66,17 +67,17 @@ public class TelaCadastro {
 		JLabel lblNewLabel_2 = new JLabel("Senha: ");
 		lblNewLabel_2.setBounds(46, 86, 44, 12);
 		frame.getContentPane().add(lblNewLabel_2);
-
-		email = new JTextField();
-		email.setBounds(78, 58, 96, 18);
-		frame.getContentPane().add(email);
-		email.setColumns(10);
-
-		senha = new JTextField();
-		senha.setColumns(10);
-		senha.setBounds(78, 83, 96, 18);
-		frame.getContentPane().add(senha);
-
+		
+		lblEmail = new JTextField();
+		lblEmail.setBounds(88, 61, 96, 18);
+		frame.getContentPane().add(lblEmail);
+		lblEmail.setColumns(10);
+		
+		lblSenha = new JTextField();
+		lblSenha.setColumns(10);
+		lblSenha.setBounds(88, 83, 96, 18);
+		frame.getContentPane().add(lblSenha);
+		
 		JButton btnLogin = new JButton("Fazer login");
 		btnLogin.addActionListener(e -> {
 
@@ -86,20 +87,21 @@ public class TelaCadastro {
 		});
 		btnLogin.setBounds(59, 168, 128, 20);
 		frame.getContentPane().add(btnLogin);
-
-		nome = new JTextField();
-		nome.setColumns(10);
-		nome.setBounds(78, 30, 96, 18);
-		frame.getContentPane().add(nome);
-
+		
+		lblNome = new JTextField();
+		lblNome.setColumns(10);
+		lblNome.setBounds(90, 30, 96, 18);
+		frame.getContentPane().add(lblNome);
+		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nomeUsu, emailUsu, senhaUsu;
-
-				nomeUsu = nome.getText();
-				emailUsu = email.getText();
-				senhaUsu = senha.getText();
+				
+				
+				nomeUsu = lblNome.getText();
+				emailUsu = lblEmail.getText();
+				senhaUsu = lblSenha.getText();
 				Usuario usuario = new Usuario(nomeUsu, emailUsu, senhaUsu);
 
 				try {
@@ -130,7 +132,7 @@ public class TelaCadastro {
 		frame.getContentPane().add(textField);
 
 		JLabel lblNewLabel_2_1 = new JLabel("Confirmar senha: ");
-		lblNewLabel_2_1.setBounds(29, 116, 51, 12);
+		lblNewLabel_2_1.setBounds(7, 106, 83, 28);
 		frame.getContentPane().add(lblNewLabel_2_1);
 	}
 }
