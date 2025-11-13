@@ -53,7 +53,7 @@ public class TelaInicial {
 		
 		JButton btnMusicasDisponiveis = new JButton("Músicas Disponíveis");
 		btnMusicasDisponiveis.addActionListener(e -> {
-			new TelaMusicasDisponiveis();
+			new TelaMusicasDisponiveis(usuarioLogado);
 			frmTelaInicial.dispose();
 		});
 		btnMusicasDisponiveis.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -71,7 +71,7 @@ public class TelaInicial {
 		
 		JButton btnBandasDisponiveis = new JButton("Bandas disponíveis");
 		btnBandasDisponiveis.addActionListener(e -> {
-			new TelaMusicasDisponiveis();
+			new TelasBandasDisponiveis();
 			frmTelaInicial.dispose();
 		});
 		btnBandasDisponiveis.setFont(new Font("Tahoma", Font.PLAIN, 12));
