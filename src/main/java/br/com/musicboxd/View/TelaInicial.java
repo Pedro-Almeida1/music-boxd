@@ -80,7 +80,7 @@ public class TelaInicial {
 		
 		JButton btnCadastrarBanda = new JButton("Cadastrar Banda");
 		btnCadastrarBanda.addActionListener(e -> {
-			new TelaCadastroBanda();
+			new TelaCadastroBanda(usuarioLogado);
 			frmTelaInicial.dispose();
 		});
 		btnCadastrarBanda.setFont(new Font("Tahoma", Font.PLAIN, 12));
