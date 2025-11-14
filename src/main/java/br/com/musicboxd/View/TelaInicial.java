@@ -12,34 +12,12 @@ public class TelaInicial {
 	private JFrame frmTelaInicial;
 	private Usuario usuarioLogado;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					TelaInicial window = new TelaInicial();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
-	 */
 	public TelaInicial(Usuario usuario) {
 		usuarioLogado = usuario;
 		initialize();
 		this.frmTelaInicial.setVisible(true);
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	
 	private void initialize() {
 		frmTelaInicial = new JFrame();
 		frmTelaInicial.setBounds(100, 100, 593, 305);

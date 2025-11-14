@@ -13,18 +13,23 @@ import br.com.musicboxd.model.Musica;
 import br.com.musicboxd.model.Usuario;
 
 import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaMusicasDisponiveis {
 
-	private JFrame frame;
+	private JFrame frmMusicasDisponiveis;
 	private JTable table;
 	private List<Musica> listaMusicas;
 	private Usuario usuario;
+	private JButton btnVoltar;
 	
 	public TelaMusicasDisponiveis(Usuario usuario) {
 		this.usuario = usuario;
 		initialize();
-		this.frame.setVisible(true);
+		this.frmMusicasDisponiveis.setVisible(true);
 		
 		DefaultTableModel modelo = new DefaultTableModel(
 				new Object[]{"Nome", "Artista", "Gênero"}, 0
@@ -50,14 +55,14 @@ public class TelaMusicasDisponiveis {
 	}
 
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 544, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmMusicasDisponiveis = new JFrame();
+		frmMusicasDisponiveis.setBounds(100, 100, 544, 300);
+		frmMusicasDisponiveis.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMusicasDisponiveis.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 45, 510, 176);
-		frame.getContentPane().add(scrollPane);
+		frmMusicasDisponiveis.getContentPane().add(scrollPane);
 				
 		table = new JTable();
 		table.addMouseListener(new MouseAdapter() {
@@ -72,6 +77,15 @@ public class TelaMusicasDisponiveis {
 		});
 		scrollPane.setViewportView(table);
 		
-		frame.setLocationRelativeTo(null);
+		btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(e -> {
+			new TelaInicial(usuario);
+			frmMusicasDisponiveis.dispose();
+		});
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnVoltar.setBounds(435, 232, 85, 21);
+		frmMusicasDisponiveis.getContentPane().add(btnVoltar);
+		
+		frmMusicasDisponiveis.setLocationRelativeTo(null);
 	}
 }
