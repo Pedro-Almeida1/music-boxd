@@ -1,7 +1,5 @@
 package br.com.musicboxd.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,22 +20,6 @@ public class TelaLogin {
 	private JFrame frmLogin;
 	private JPasswordField txtSenha;
 	private JTextField txtNome;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaLogin window = new TelaLogin();
-					window.frmLogin.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public TelaLogin() {
 		initialize();

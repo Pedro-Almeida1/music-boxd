@@ -1,7 +1,5 @@
 package br.com.musicboxd.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,8 +12,6 @@ import br.com.musicboxd.model.Usuario;
 import br.com.musicboxd.model.artistas.Banda;
 
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaCadastroBanda {
 
@@ -25,27 +21,6 @@ public class TelaCadastroBanda {
 	private JTextField genero;
 	private Usuario usuarioLogado;
 
-	/**
-	 * Launch the application.
-	 */
-	/*
-	 * public static void main(String[] args) {
-	 * EventQueue.invokeLater(new Runnable() {
-	 * public void run() {
-	 * try {
-	 * TelaCadastroBanda window = new TelaCadastroBanda();
-	 * window.frame.setVisible(true);
-	 * } catch (Exception e) {
-	 * e.printStackTrace();
-	 * }
-	 * }
-	 * });
-	 * }
-	 */
-
-	/**
-	 * Create the application.
-	 */
 	public TelaCadastroBanda(Usuario usuario) {
 		usuarioLogado = usuario;
 		initialize();

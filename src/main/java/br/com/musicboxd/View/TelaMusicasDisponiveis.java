@@ -15,8 +15,6 @@ import br.com.musicboxd.model.Usuario;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class TelaMusicasDisponiveis {
 
@@ -47,8 +45,7 @@ public class TelaMusicasDisponiveis {
 		for (Musica m : listaMusicas) {
 			modelo.addRow(new Object[] {
 					m.getTitulo(),
-//					m.getArtista().getNome(),
-					"Artista",
+					m.getArtista().getNome(),
 					m.getGenero()
 			});
 		}
