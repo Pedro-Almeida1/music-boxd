@@ -36,11 +36,12 @@ public class Musica {
 
     public Musica() {}
 
-    public Musica(String titulo, int anoLancamento, String genero, int duracao) {
+    public Musica(String titulo, int anoLancamento, String genero, int duracao, Artista artista) {
         this.titulo = titulo;
         this.anoLancamento = anoLancamento;
         this.genero = genero;
         this.duracaoMinutos = duracao;
+        this.artista = artista;
     }
 
     @Override

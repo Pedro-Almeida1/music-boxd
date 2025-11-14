@@ -1,18 +1,17 @@
 package br.com.musicboxd.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import javax.swing.JTextField;
 
 import br.com.musicboxd.DAO.MusicaDAO;
 import br.com.musicboxd.model.Musica;
-
+import br.com.musicboxd.model.artistas.Artista;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Font;
@@ -25,26 +24,16 @@ public class TelaCadastroMusica {
 	private JTextField txtAnoDeLancamento;
 	private JTextField txtDuracao;
 	private JLabel lblNewLabel;
+	private JLabel lblArtista;
+	private JTextField txtArtista;
+	private Artista artista;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaCadastroMusica window = new TelaCadastroMusica();
-					window.frmCadastrarMsica.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+
+	public void setArtista(Artista artista) {
+		this.artista = artista;
+		this.txtArtista.setText(artista.getNome());
 	}
-
-	/**
-	 * Create the application.
-	 */
+	
 	public TelaCadastroMusica() {
 		initialize();
 		this.frmCadastrarMsica.setVisible(true);
@@ -57,7 +46,7 @@ public class TelaCadastroMusica {
 		frmCadastrarMsica = new JFrame();
 		frmCadastrarMsica.setTitle("Cadastrar Música");
 		frmCadastrarMsica.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\pedro\\Downloads\\telacadastro.png"));
-		frmCadastrarMsica.setBounds(100, 100, 399, 370);
+		frmCadastrarMsica.setBounds(100, 100, 399, 409);
 		frmCadastrarMsica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCadastrarMsica.getContentPane().setLayout(null);
 		
@@ -106,9 +95,14 @@ public class TelaCadastroMusica {
 					String genero = txtGenero.getText();
 					int ano = Integer.parseInt(txtAnoDeLancamento.getText());
 					int duracao = Integer.parseInt(txtDuracao.getText());
-
-					Musica musicanova = new Musica(titulo, ano, genero, duracao);
 					
+					if (titulo == "" || genero == "" || artista == null) {
+						JOptionPane.showMessageDialog(null, "Preencha todos os campos para cadastrar uma música!",
+								"Erro no cadastro de música", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+
+					Musica musicanova = new Musica(titulo, ano, genero, duracao, artista);
 					MusicaDAO musicaDAO = new MusicaDAO();
 					
 					if (musicaDAO.existePorNome(musicanova.getTitulo())) {
@@ -124,17 +118,34 @@ public class TelaCadastroMusica {
 					txtGenero.setText("");
 					txtAnoDeLancamento.setText("");
 					txtDuracao.setText("");
+					txtArtista.setText("");
+					artista = null;
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Erro: ano e duração devem ser números!");
 				}
 			}
 		});
-		btnCadastrar.setBounds(133, 256, 118, 46);
+		btnCadastrar.setBounds(133, 316, 118, 46);
 		frmCadastrarMsica.getContentPane().add(btnCadastrar);
 		
 		lblNewLabel = new JLabel("Cadastrar Música");
 		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 14));
 		lblNewLabel.setBounds(125, 22, 126, 34);
 		frmCadastrarMsica.getContentPane().add(lblNewLabel);
+		
+		lblArtista = new JLabel("Artista:");
+		lblArtista.setBounds(50, 254, 71, 14);
+		frmCadastrarMsica.getContentPane().add(lblArtista);
+		
+		txtArtista = new JTextField();
+		txtArtista.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new TelaArtistasDisponiveis(TelaCadastroMusica.this);
+			}
+		});
+		txtArtista.setColumns(10);
+		txtArtista.setBounds(147, 252, 86, 20);
+		frmCadastrarMsica.getContentPane().add(txtArtista);
 	}
 }

@@ -5,7 +5,7 @@ import br.com.musicboxd.model.artistas.Cantor;
 
 public class CantorDAO extends GenericDAO<Cantor> {
 
-    public CantorDAO(Class<Cantor> entidade) {
+    public CantorDAO() {
         super(Cantor.class);
     }
     
