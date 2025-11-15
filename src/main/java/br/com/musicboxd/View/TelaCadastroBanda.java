@@ -15,29 +15,29 @@ import java.awt.Font;
 
 public class TelaCadastroBanda {
 
-	private JFrame frame;
-	private JTextField nome;
-	private JTextArea descricao;
-	private JTextField genero;
+	private JFrame frmCadastroBanda;
+	private JTextField txtNome;
+	private JTextArea txtDescricao;
+	private JTextField txtGenero;
 	private Usuario usuarioLogado;
 
 	public TelaCadastroBanda(Usuario usuario) {
 		usuarioLogado = usuario;
 		initialize();
-		this.frame.setVisible(true);
+		this.frmCadastroBanda.setVisible(true);
 	}
 
 	void realizarCadastro() {
-		String textoNome = nome.getText();
-		String textoDescricao = descricao.getText();
-		String textoGenero = genero.getText();
+		String textoNome = txtNome.getText();
+		String textotxtDescricao = txtDescricao.getText();
+		String textotxtGenero = txtGenero.getText();
 
-		if ((textoNome.equals("")) || (textoGenero.equals("")) || (textoDescricao.equals(""))) {
+		if ((textoNome.equals("")) || (textotxtGenero.equals("")) || (textotxtDescricao.equals(""))) {
 			JOptionPane.showInternalMessageDialog(null, "Informe os dados para cadastro",
-					"Todos os dados solicitados devem ser informados para cadastrar", JOptionPane.ERROR_MESSAGE);
+					"Todos os dados solicitados devem ser informados para btnCadastrar", JOptionPane.ERROR_MESSAGE);
 		}
 
-		Banda banda = new Banda(textoNome, textoGenero, textoDescricao);
+		Banda banda = new Banda(textoNome, textotxtGenero, textotxtDescricao);
 		try {
 			BandaDAO bandaDAO = new BandaDAO();
 
@@ -50,66 +50,67 @@ public class TelaCadastroBanda {
 			bandaDAO.salvar(banda);
 			JOptionPane.showMessageDialog(null, "Cadastro da banda " + banda.getNome() + " realizado com sucesso!",
 					"Cadastro de banda concluído", JOptionPane.INFORMATION_MESSAGE);
-			nome.setText("");
-			descricao.setText("");
-			genero.setText("");
+			txtNome.setText("");
+			txtDescricao.setText("");
+			txtGenero.setText("");
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro ao cadastrar banda! Tente novamente mais tarde",
+			JOptionPane.showMessageDialog(null, "Erro ao btnCadastrar banda! Tente novamente mais tarde",
 					"Erro no cadastro de banda", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the frmCadastroBanda.
 	 */
 	private void initialize() {
-		frame = new JFrame("Cadastre a banda");
-		frame.setSize(480, 480);
-		frame.setLocationRelativeTo(null);
-		frame.getContentPane().setLayout(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmCadastroBanda = new JFrame("Cadastre a banda");
+		frmCadastroBanda.setSize(480, 480);
+		frmCadastroBanda.setLocationRelativeTo(null);
+		frmCadastroBanda.getContentPane().setLayout(null);
+		frmCadastroBanda.setDefaultCloseOperation(frmCadastroBanda.EXIT_ON_CLOSE);
 
-		JLabel nomeLabel = new JLabel("Nome da banda:");
-		nomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		nomeLabel.setBounds(32, 40, 136, 50);
-		frame.getContentPane().add(nomeLabel);
+		JLabel lblNome = new JLabel("Nome da banda:");
+		lblNome.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		lblNome.setBounds(32, 40, 136, 50);
+		frmCadastroBanda.getContentPane().add(lblNome);
 
-		nome = new JTextField();
-		nome.setBounds(32, 77, 190, 50);
-		frame.getContentPane().add(nome);
+		txtNome = new JTextField();
+		txtNome.setBounds(32, 77, 190, 50);
+		frmCadastroBanda.getContentPane().add(txtNome);
 
-		JLabel generoLabel = new JLabel("Genero musical:");
-		generoLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		generoLabel.setBounds(242, 40, 200, 50);
-		frame.getContentPane().add(generoLabel);
+		JLabel lblGenero = new JLabel("Genero musical:");
+		lblGenero.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		lblGenero.setBounds(242, 40, 200, 50);
+		frmCadastroBanda.getContentPane().add(lblGenero);
 
-		genero = new JTextField();
-		genero.setBounds(242, 77, 190, 50);
-		frame.getContentPane().add(genero);
+		txtGenero = new JTextField();
+		txtGenero.setBounds(242, 77, 190, 50);
+		frmCadastroBanda.getContentPane().add(txtGenero);
 
-		JLabel descricaoLabel = new JLabel("Descrição da banda:");
-		descricaoLabel.setBounds(32, 138, 200, 43);
-		descricaoLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		frame.getContentPane().add(descricaoLabel);
+		JLabel lblDescricao = new JLabel("Descrição da banda:");
+		lblDescricao.setBounds(32, 138, 200, 43);
+		lblDescricao.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		frmCadastroBanda.getContentPane().add(lblDescricao);
 
-		descricao = new JTextArea();
-		descricao.setBounds(32, 172, 400, 200);
-		descricao.setLineWrap(true);
-		descricao.setWrapStyleWord(true);
-		frame.getContentPane().add(descricao);
+		txtDescricao = new JTextArea();
+		txtDescricao.setBounds(32, 172, 400, 200);
+		txtDescricao.setLineWrap(true);
+		txtDescricao.setWrapStyleWord(true);
+		frmCadastroBanda.getContentPane().add(txtDescricao);
 
-		JButton cadastrar = new JButton("Cadastrar");
-		cadastrar.setBounds(32, 383, 400, 50);
-		cadastrar.addActionListener(e -> realizarCadastro());
-		frame.getContentPane().add(cadastrar);
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setBounds(32, 383, 400, 50);
+		btnCadastrar.addActionListener(e -> realizarCadastro());
+		frmCadastroBanda.getContentPane().add(btnCadastrar);
+		frmCadastroBanda.getRootPane().setDefaultButton(btnCadastrar);
 
-		JButton voltar = new JButton("Voltar");
-		voltar.addActionListener(e -> {
+		JButton btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(e -> {
 			new TelaInicial(usuarioLogado);
-			frame.dispose();
+			frmCadastroBanda.dispose();
 		});
-		voltar.setBounds(32, 22, 89, 23);
-		frame.getContentPane().add(voltar);
+		btnVoltar.setBounds(32, 22, 89, 23);
+		frmCadastroBanda.getContentPane().add(btnVoltar);
 
 	}
 }
