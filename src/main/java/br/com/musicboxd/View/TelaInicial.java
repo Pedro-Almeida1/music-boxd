@@ -76,7 +76,7 @@ public class TelaInicial {
 		
 		JButton btnCadastrarCantor = new JButton("Cadastrar Cantor");
 		btnCadastrarCantor.addActionListener(e -> {
-			new TelaCadastroCantor();
+			new TelaCadastroCantor(usuarioLogado);
 			frmTelaInicial.dispose();
 		});
 		btnCadastrarCantor.setFont(new Font("Tahoma", Font.PLAIN, 12));
