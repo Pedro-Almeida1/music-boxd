@@ -67,7 +67,7 @@ public class TelaBandasDisponiveis {
 				int linha = table.getSelectedRow();
 				if (linha != -1) {
 					Banda bandaSelecionada = listaBandas.get(linha);
-					// new TelaAvaliarBanda(bandaSelecionada, usuario);
+					 new TelaAvaliarBanda(bandaSelecionada, usuario);
 				}
 			}
 		});

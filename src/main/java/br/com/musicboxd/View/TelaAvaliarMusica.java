@@ -41,7 +41,7 @@ public class TelaAvaliarMusica {
 	private void initialize() {
 		frmAvaliarMusica = new JFrame();
 		frmAvaliarMusica.setBounds(100, 100, 393, 183);
-		frmAvaliarMusica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAvaliarMusica.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmAvaliarMusica.getContentPane().setLayout(null);
 		
 		JLabel lblNomeMusica = new JLabel("Música: " + musica.getTitulo());

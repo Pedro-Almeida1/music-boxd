@@ -86,6 +86,7 @@ public class TelaInicial {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(e -> {
 			frmTelaInicial.dispose();
+			new TelaLogin();
 		});
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnSair.setBounds(484, 237, 85, 21);
