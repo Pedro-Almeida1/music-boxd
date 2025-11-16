@@ -67,7 +67,7 @@ public class TelaCadastroBanda {
 		frmCadastroBanda.setSize(480, 480);
 		frmCadastroBanda.setLocationRelativeTo(null);
 		frmCadastroBanda.getContentPane().setLayout(null);
-		frmCadastroBanda.setDefaultCloseOperation(frmCadastroBanda.EXIT_ON_CLOSE);
+		frmCadastroBanda.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JLabel lblNome = new JLabel("Nome da banda:");
 		lblNome.setFont(new Font("Times New Roman", Font.BOLD, 20));

@@ -67,7 +67,7 @@ public class TelaCantoresDisponiveis {
 				int linha = tblCantores.getSelectedRow();
 				if (linha != -1) {
 					Cantor cantorSelecionado = listaCantores.get(linha);
-					// new TelaAvaliarCantor(cantorSelecionado, usuario);
+					new TelaAvaliarCantor(cantorSelecionado, usuario);
 				}
 			}
 		});
