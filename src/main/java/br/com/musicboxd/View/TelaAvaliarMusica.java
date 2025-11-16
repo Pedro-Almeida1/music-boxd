@@ -6,10 +6,11 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 
-import br.com.musicboxd.DAO.AvaliacaoDAO.AvaliacaoMusicaDAO;
+import br.com.musicboxd.DAO.AvaliacaoDAO.AvaliacaoDAO;
 import br.com.musicboxd.model.Musica;
 import br.com.musicboxd.model.Usuario;
 import br.com.musicboxd.model.avaliacoes.Avaliacao;
+import br.com.musicboxd.model.avaliacoes.AvaliacaoMusica;
 
 import javax.swing.JButton;
 
@@ -26,8 +27,8 @@ public class TelaAvaliarMusica {
 		this.musica = musica;
 		this.usuario = usuario;
 		
-		AvaliacaoMusicaDAO avaliacaoMusicaDAO = new AvaliacaoMusicaDAO();
-		var avaliacoes = avaliacaoMusicaDAO.buscaPorMusica(musica);
+		AvaliacaoDAO<AvaliacaoMusica> avaliacaoDAO = new AvaliacaoDAO<AvaliacaoMusica>(AvaliacaoMusica.class);
+		var avaliacoes = avaliacaoDAO.buscarAvaliacoes(musica.getId());
 		this.mediaAvaliacoes = avaliacoes
 				.stream()
 				.mapToDouble(Avaliacao::getNota)
@@ -98,10 +99,10 @@ public class TelaAvaliarMusica {
 	}
 	
 	private void avaliar(double nota) {
-		AvaliacaoMusicaDAO avaliacaoMusicaDAO = new AvaliacaoMusicaDAO();
+		AvaliacaoDAO<AvaliacaoMusica> avaliacaoDAO = new AvaliacaoDAO<AvaliacaoMusica>(AvaliacaoMusica.class);
 	
 		try {
-			avaliacaoMusicaDAO.salvarOuAtualizar(musica, usuario, nota);
+			avaliacaoDAO.salvarOuAtualizar(musica.getId(), usuario, nota, musica);
 			JOptionPane.showMessageDialog(null, "Avaliação registrada com sucesso!", "Avaliação feita", JOptionPane.INFORMATION_MESSAGE);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Erro ao avaliar música!\nTente novamente mais tarde", "Erro ao avaliar música", JOptionPane.ERROR_MESSAGE);
