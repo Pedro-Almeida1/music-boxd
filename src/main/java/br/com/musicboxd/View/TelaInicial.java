@@ -47,41 +47,32 @@ public class TelaInicial {
 		btnCadastrarMusica.setBounds(10, 156, 176, 39);
 		frmTelaInicial.getContentPane().add(btnCadastrarMusica);
 		
-		JButton btnBandasDisponiveis = new JButton("Bandas disponíveis");
-		btnBandasDisponiveis.addActionListener(e -> {
-			new TelaBandasDisponiveis(usuarioLogado);
+		JButton btnVitrolasDisponiveis = new JButton("Vitrolas disponíveis");
+		btnVitrolasDisponiveis.addActionListener(e -> {
+			new TelaVitrolasDisponiveis(usuarioLogado);
 			frmTelaInicial.dispose();
 		});
-		btnBandasDisponiveis.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnBandasDisponiveis.setBounds(204, 107, 176, 39);
-		frmTelaInicial.getContentPane().add(btnBandasDisponiveis);
+		btnVitrolasDisponiveis.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVitrolasDisponiveis.setBounds(204, 134, 176, 39);
+		frmTelaInicial.getContentPane().add(btnVitrolasDisponiveis);
 		
-		JButton btnCadastrarBanda = new JButton("Cadastrar Banda");
-		btnCadastrarBanda.addActionListener(e -> {
-			new TelaCadastroBanda(usuarioLogado);
-			frmTelaInicial.dispose();
-		});
-		btnCadastrarBanda.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnCadastrarBanda.setBounds(204, 156, 176, 39);
-		frmTelaInicial.getContentPane().add(btnCadastrarBanda);
-		
-		JButton btnCantoresDisponiveis = new JButton("Cantores Disponíveis");
-		btnCantoresDisponiveis.addActionListener(e -> {
+		JButton btnDiscosDisponiveis = new JButton("Discos Disponíveis");
+		btnDiscosDisponiveis.addActionListener(e -> {
 			new TelaCantoresDisponiveis(usuarioLogado);
 			frmTelaInicial.dispose();
 		});
-		btnCantoresDisponiveis.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnCantoresDisponiveis.setBounds(390, 107, 179, 39);
-		frmTelaInicial.getContentPane().add(btnCantoresDisponiveis);
+		btnDiscosDisponiveis.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnDiscosDisponiveis.setBounds(390, 107, 179, 39);
+		frmTelaInicial.getContentPane().add(btnDiscosDisponiveis);
 		
-		JButton btnCadastrarCantor = new JButton("Cadastrar Cantor");
-		btnCadastrarCantor.addActionListener(e -> {
+		JButton btnCadastrarDisco = new JButton("Cadastrar Disco");
+		btnCadastrarDisco.addActionListener(e -> {
 			new TelaCadastroCantor(usuarioLogado);
 			frmTelaInicial.dispose();
 		});
-		btnCadastrarCantor.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnCadastrarCantor.setBounds(390, 156, 179, 39);
-		frmTelaInicial.getContentPane().add(btnCadastrarCantor);
+		btnCadastrarDisco.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnCadastrarDisco.setBounds(390, 156, 179, 39);
+		frmTelaInicial.getContentPane().add(btnCadastrarDisco);
 		
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(e -> {
