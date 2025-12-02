@@ -81,14 +81,21 @@ public class TelaCadastro {
 		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nomeUsu, emailUsu, senhaUsu;
+				String nomeUsu, emailUsu, senhaUsu, confirmarSenhaUsu;
 				nomeUsu = lblNome.getText();
 				emailUsu = lblEmail.getText();
 				senhaUsu = new String(lblSenha.getPassword());
+				confirmarSenhaUsu = new String(lblConfirmarSenha.getPassword());
 				
 				if (nomeUsu.equals("") || emailUsu.equals("") || senhaUsu.equals("")) {
 					JOptionPane.showMessageDialog(null, "Erro ao cadastrar!\nPreencha todos os campos",
 							"Dados incompletos", JOptionPane.ERROR_MESSAGE);		
+					return;
+				}
+
+				if (!senhaUsu.equals(confirmarSenhaUsu)) {
+					JOptionPane.showMessageDialog(null, "Erro ao cadastrar!\nOs campos de senha devem ser idênticos!",
+							"Senhas não conferem", JOptionPane.ERROR_MESSAGE);		
 					return;
 				}
 				

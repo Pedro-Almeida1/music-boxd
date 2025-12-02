@@ -12,7 +12,6 @@ import br.com.musicboxd.DAO.AvaliacaoDAO.AvaliacaoDAO;
 import br.com.musicboxd.model.Usuario;
 import br.com.musicboxd.model.Vitrola;
 import br.com.musicboxd.model.avaliacoes.Avaliacao;
-import br.com.musicboxd.model.avaliacoes.AvaliacaoBanda;
 import br.com.musicboxd.model.avaliacoes.AvaliacaoVitrola;
 
 public class TelaAvaliarVitrola {
