@@ -7,6 +7,7 @@ import javax.swing.JTextField;
 
 import br.com.musicboxd.DAO.MusicaDAO;
 import br.com.musicboxd.model.Musica;
+import br.com.musicboxd.model.Usuario;
 import br.com.musicboxd.model.artistas.Artista;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -27,6 +28,8 @@ public class TelaCadastroMusica {
 	private JLabel lblArtista;
 	private JTextField txtArtista;
 	private Artista artista;
+	private JButton btnVoltar;
+	private Usuario usuario;
 
 
 	public void setArtista(Artista artista) {
@@ -34,24 +37,26 @@ public class TelaCadastroMusica {
 		this.txtArtista.setText(artista.getNome());
 	}
 	
-	public TelaCadastroMusica() {
-		initialize();
-		this.frmCadastrarMsica.setVisible(true);
+	public TelaCadastroMusica(Usuario usuario) {
+	    this.usuario = usuario; 
+	    initialize();
+	    this.frmCadastrarMsica.setVisible(true);
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frmCadastrarMsica = new JFrame();
 		frmCadastrarMsica.setTitle("Cadastrar Música");
-		frmCadastrarMsica.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\pedro\\Downloads\\telacadastro.png"));
+		frmCadastrarMsica.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconCadastroMusica.png")));
 		frmCadastrarMsica.setBounds(100, 100, 399, 409);
 		frmCadastrarMsica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCadastrarMsica.getContentPane().setLayout(null);
+		frmCadastrarMsica.setLocationRelativeTo(null);
 		
 		JLabel lblTitulo = new JLabel("Título:");
-		lblTitulo.setBounds(91, 69, 30, 23);
+		lblTitulo.setBounds(91, 69, 67, 23);
 		frmCadastrarMsica.getContentPane().add(lblTitulo);
 		
 		txtTitulo = new JTextField();
@@ -60,7 +65,7 @@ public class TelaCadastroMusica {
 		txtTitulo.setColumns(10);
 		
 		JLabel lblGenero = new JLabel("Genêro:");
-		lblGenero.setBounds(82, 118, 39, 14);
+		lblGenero.setBounds(82, 118, 76, 14);
 		frmCadastrarMsica.getContentPane().add(lblGenero);
 		
 		txtGenero = new JTextField();
@@ -69,7 +74,7 @@ public class TelaCadastroMusica {
 		frmCadastrarMsica.getContentPane().add(txtGenero);
 		
 		JLabel lblAnoDeLanamento = new JLabel("Ano de lançamento:");
-		lblAnoDeLanamento.setBounds(25, 165, 96, 14);
+		lblAnoDeLanamento.setBounds(25, 165, 181, 14);
 		frmCadastrarMsica.getContentPane().add(lblAnoDeLanamento);
 		
 		txtAnoDeLancamento = new JTextField();
@@ -78,7 +83,7 @@ public class TelaCadastroMusica {
 		frmCadastrarMsica.getContentPane().add(txtAnoDeLancamento);
 		
 		JLabel lblDuracao = new JLabel("Duração (min):");
-		lblDuracao.setBounds(50, 210, 71, 14);
+		lblDuracao.setBounds(50, 210, 108, 14);
 		frmCadastrarMsica.getContentPane().add(lblDuracao);
 		
 		txtDuracao = new JTextField();
@@ -96,7 +101,7 @@ public class TelaCadastroMusica {
 					int ano = Integer.parseInt(txtAnoDeLancamento.getText());
 					int duracao = Integer.parseInt(txtDuracao.getText());
 					
-					if (titulo == "" || genero == "" || artista == null) {
+					if (titulo.isEmpty() || genero.isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Preencha todos os campos para cadastrar uma música!",
 								"Erro no cadastro de música", JOptionPane.ERROR_MESSAGE);
 						return;
@@ -134,7 +139,7 @@ public class TelaCadastroMusica {
 		frmCadastrarMsica.getContentPane().add(lblNewLabel);
 		
 		lblArtista = new JLabel("Artista:");
-		lblArtista.setBounds(50, 254, 71, 14);
+		lblArtista.setBounds(50, 254, 89, 14);
 		frmCadastrarMsica.getContentPane().add(lblArtista);
 		
 		txtArtista = new JTextField();
@@ -147,5 +152,18 @@ public class TelaCadastroMusica {
 		txtArtista.setColumns(10);
 		txtArtista.setBounds(147, 252, 86, 20);
 		frmCadastrarMsica.getContentPane().add(txtArtista);
+		
+		btnVoltar = new JButton("Voltar");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new TelaInicial(usuario);
+				frmCadastrarMsica.dispose();
+			}
+		});
+		btnVoltar.setBounds(10, 11, 89, 23);
+		frmCadastrarMsica.getContentPane().add(btnVoltar);
+
+		btnVoltar.setBounds(10, 11, 89, 23);
+		frmCadastrarMsica.getContentPane().add(btnVoltar);
 	}
 }

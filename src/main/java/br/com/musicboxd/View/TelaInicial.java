@@ -40,14 +40,14 @@ public class TelaInicial {
 		
 		JButton btnCadastrarMusica = new JButton("Cadastrar Música");
 		btnCadastrarMusica.addActionListener(e -> {
-			new TelaCadastroMusica();
+			new TelaCadastroMusica(usuarioLogado);
 			frmTelaInicial.dispose();
 		});
 		btnCadastrarMusica.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCadastrarMusica.setBounds(10, 156, 176, 39);
 		frmTelaInicial.getContentPane().add(btnCadastrarMusica);
 		
-		JButton btnVitrolasDisponiveis = new JButton("Vitrolas disponíveis");
+		JButton btnVitrolasDisponiveis = new JButton("Vitrolas disponíveis");	
 		btnVitrolasDisponiveis.addActionListener(e -> {
 			new TelaVitrolasDisponiveis(usuarioLogado);
 			frmTelaInicial.dispose();
