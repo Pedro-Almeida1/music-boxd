@@ -11,14 +11,17 @@ import br.com.musicboxd.model.Usuario;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
+import java.awt.Font;
+import java.awt.Toolkit;
 
 public class TelaCadastro {
 
 	private JFrame frame;
 	private JTextField lblEmail;
-	private JTextField lblSenha;
 	private JTextField lblNome;
-	private JTextField textField;
+	private JPasswordField lblSenha;
+	private JPasswordField lblConfirmarSenha;
 
 	public TelaCadastro() {
 		initialize();
@@ -27,56 +30,68 @@ public class TelaCadastro {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 255, 256);
+		frame.setBounds(100, 100, 348, 258);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconCadastroMusica.png")));
 
-		JLabel lblNewLabel = new JLabel("Nome:");
-		lblNewLabel.setBounds(46, 33, 34, 12);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel txtNome = new JLabel("Nome:");
+		txtNome.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtNome.setBounds(13, 12, 70, 12);
+		frame.getContentPane().add(txtNome);
 
-		JLabel lblNewLabel_1 = new JLabel("Email: ");
-		lblNewLabel_1.setBounds(46, 64, 34, 12);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel txtEmail = new JLabel("Email: ");
+		txtEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtEmail.setBounds(13, 41, 70, 12);
+		frame.getContentPane().add(txtEmail);
 
-		JLabel lblNewLabel_2 = new JLabel("Senha: ");
-		lblNewLabel_2.setBounds(46, 86, 44, 12);
-		frame.getContentPane().add(lblNewLabel_2);
+		JLabel txtSenha = new JLabel("Senha: ");
+		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtSenha.setBounds(10, 69, 96, 12);
+		frame.getContentPane().add(txtSenha);
 		
 		lblEmail = new JTextField();
-		lblEmail.setBounds(88, 61, 96, 18);
+		lblEmail.setBounds(131, 38, 96, 18);
 		frame.getContentPane().add(lblEmail);
 		lblEmail.setColumns(10);
 		
-		lblSenha = new JTextField();
-		lblSenha.setColumns(10);
-		lblSenha.setBounds(88, 83, 96, 18);
-		frame.getContentPane().add(lblSenha);
-		
 		JButton btnLogin = new JButton("Fazer login");
+		btnLogin.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnLogin.addActionListener(e -> {
-
 			new TelaLogin();
 			frame.dispose();
-
 		});
-		btnLogin.setBounds(59, 168, 128, 20);
+		btnLogin.setBounds(107, 170, 128, 20);
 		frame.getContentPane().add(btnLogin);
 		
 		lblNome = new JTextField();
 		lblNome.setColumns(10);
-		lblNome.setBounds(90, 30, 96, 18);
+		lblNome.setBounds(131, 10, 96, 18);
 		frame.getContentPane().add(lblNome);
 		
+		lblSenha = new JPasswordField();
+		lblSenha.setBounds(131, 66, 96, 19);
+		frame.getContentPane().add(lblSenha);
+		
+		lblConfirmarSenha = new JPasswordField();
+		lblConfirmarSenha.setBounds(131, 94, 96, 19);
+		frame.getContentPane().add(lblConfirmarSenha);
+		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nomeUsu, emailUsu, senhaUsu;
-				
-				
 				nomeUsu = lblNome.getText();
 				emailUsu = lblEmail.getText();
-				senhaUsu = lblSenha.getText();
+				senhaUsu = new String(lblSenha.getPassword());
+				
+				if (nomeUsu.equals("") || emailUsu.equals("") || senhaUsu.equals("")) {
+					JOptionPane.showMessageDialog(null, "Erro ao cadastrar!\nPreencha todos os campos",
+							"Dados incompletos", JOptionPane.ERROR_MESSAGE);		
+					return;
+				}
+				
 				Usuario usuario = new Usuario(nomeUsu, emailUsu, senhaUsu);
 
 				try {
@@ -98,16 +113,16 @@ public class TelaCadastro {
 				}
 			}
 		});
-		btnSalvar.setBounds(59, 138, 128, 20);
+		btnSalvar.setBounds(107, 140, 128, 20);
 		frame.getContentPane().add(btnSalvar);
+		frame.getRootPane().setDefaultButton(btnSalvar);
 
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(78, 110, 96, 18);
-		frame.getContentPane().add(textField);
+		JLabel txtConfirmarSenha = new JLabel("Confirmar senha: ");
+		txtConfirmarSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtConfirmarSenha.setBounds(10, 90, 111, 28);
+		frame.getContentPane().add(txtConfirmarSenha);
+		
+		frame.setLocationRelativeTo(null);
 
-		JLabel lblNewLabel_2_1 = new JLabel("Confirmar senha: ");
-		lblNewLabel_2_1.setBounds(7, 106, 83, 28);
-		frame.getContentPane().add(lblNewLabel_2_1);
 	}
 }

@@ -19,7 +19,7 @@ import java.awt.Font;
 
 public class TelaCadastroMusica {
 
-	private JFrame frmCadastrarMsica;
+	private JFrame frmCadastrarMusica;
 	private JTextField txtTitulo;
 	private JTextField txtGenero;
 	private JTextField txtAnoDeLancamento;
@@ -40,59 +40,63 @@ public class TelaCadastroMusica {
 	public TelaCadastroMusica(Usuario usuario) {
 	    this.usuario = usuario; 
 	    initialize();
-	    this.frmCadastrarMsica.setVisible(true);
+	    this.frmCadastrarMusica.setVisible(true);
 	}
 	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmCadastrarMsica = new JFrame();
-		frmCadastrarMsica.setTitle("Cadastrar Música");
-		frmCadastrarMsica.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconCadastroMusica.png")));
-		frmCadastrarMsica.setBounds(100, 100, 399, 409);
-		frmCadastrarMsica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmCadastrarMsica.getContentPane().setLayout(null);
-		frmCadastrarMsica.setLocationRelativeTo(null);
+		frmCadastrarMusica = new JFrame();
+		frmCadastrarMusica.setTitle("Cadastrar Música");
+		frmCadastrarMusica.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconCadastroMusica.png")));
+		frmCadastrarMusica.setBounds(100, 100, 399, 409);
+		frmCadastrarMusica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmCadastrarMusica.getContentPane().setLayout(null);
+		frmCadastrarMusica.setLocationRelativeTo(null);
 		
 		JLabel lblTitulo = new JLabel("Título:");
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblTitulo.setBounds(91, 69, 67, 23);
-		frmCadastrarMsica.getContentPane().add(lblTitulo);
+		frmCadastrarMusica.getContentPane().add(lblTitulo);
 		
 		txtTitulo = new JTextField();
 		txtTitulo.setBounds(147, 70, 86, 20);
-		frmCadastrarMsica.getContentPane().add(txtTitulo);
+		frmCadastrarMusica.getContentPane().add(txtTitulo);
 		txtTitulo.setColumns(10);
 		
 		JLabel lblGenero = new JLabel("Genêro:");
+		lblGenero.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblGenero.setBounds(82, 118, 76, 14);
-		frmCadastrarMsica.getContentPane().add(lblGenero);
+		frmCadastrarMusica.getContentPane().add(lblGenero);
 		
 		txtGenero = new JTextField();
 		txtGenero.setColumns(10);
 		txtGenero.setBounds(147, 115, 86, 20);
-		frmCadastrarMsica.getContentPane().add(txtGenero);
+		frmCadastrarMusica.getContentPane().add(txtGenero);
 		
 		JLabel lblAnoDeLanamento = new JLabel("Ano de lançamento:");
+		lblAnoDeLanamento.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblAnoDeLanamento.setBounds(25, 165, 181, 14);
-		frmCadastrarMsica.getContentPane().add(lblAnoDeLanamento);
+		frmCadastrarMusica.getContentPane().add(lblAnoDeLanamento);
 		
 		txtAnoDeLancamento = new JTextField();
 		txtAnoDeLancamento.setColumns(10);
 		txtAnoDeLancamento.setBounds(147, 162, 86, 20);
-		frmCadastrarMsica.getContentPane().add(txtAnoDeLancamento);
+		frmCadastrarMusica.getContentPane().add(txtAnoDeLancamento);
 		
 		JLabel lblDuracao = new JLabel("Duração (min):");
-		lblDuracao.setBounds(50, 210, 108, 14);
-		frmCadastrarMsica.getContentPane().add(lblDuracao);
+		lblDuracao.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblDuracao.setBounds(44, 213, 98, 14);
+		frmCadastrarMusica.getContentPane().add(lblDuracao);
 		
 		txtDuracao = new JTextField();
 		txtDuracao.setColumns(10);
 		txtDuracao.setBounds(147, 207, 86, 20);
-		frmCadastrarMsica.getContentPane().add(txtDuracao);
+		frmCadastrarMusica.getContentPane().add(txtDuracao);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnCadastrar.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
@@ -101,7 +105,7 @@ public class TelaCadastroMusica {
 					int ano = Integer.parseInt(txtAnoDeLancamento.getText());
 					int duracao = Integer.parseInt(txtDuracao.getText());
 					
-					if (titulo.isEmpty() || genero.isEmpty()) {
+					if (titulo.isEmpty() || genero.isEmpty() || String.valueOf(ano).isEmpty() || String.valueOf(duracao).isEmpty()) {
 						JOptionPane.showMessageDialog(null, "Preencha todos os campos para cadastrar uma música!",
 								"Erro no cadastro de música", JOptionPane.ERROR_MESSAGE);
 						return;
@@ -131,16 +135,17 @@ public class TelaCadastroMusica {
 			}
 		});
 		btnCadastrar.setBounds(133, 316, 118, 46);
-		frmCadastrarMsica.getContentPane().add(btnCadastrar);
+		frmCadastrarMusica.getContentPane().add(btnCadastrar);
 		
 		lblNewLabel = new JLabel("Cadastrar Música");
 		lblNewLabel.setFont(new Font("Georgia", Font.BOLD, 14));
-		lblNewLabel.setBounds(125, 22, 126, 34);
-		frmCadastrarMsica.getContentPane().add(lblNewLabel);
+		lblNewLabel.setBounds(125, 22, 164, 34);
+		frmCadastrarMusica.getContentPane().add(lblNewLabel);
 		
 		lblArtista = new JLabel("Artista:");
-		lblArtista.setBounds(50, 254, 89, 14);
-		frmCadastrarMsica.getContentPane().add(lblArtista);
+		lblArtista.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblArtista.setBounds(88, 253, 49, 14);
+		frmCadastrarMusica.getContentPane().add(lblArtista);
 		
 		txtArtista = new JTextField();
 		txtArtista.addMouseListener(new MouseAdapter() {
@@ -151,19 +156,20 @@ public class TelaCadastroMusica {
 		});
 		txtArtista.setColumns(10);
 		txtArtista.setBounds(147, 252, 86, 20);
-		frmCadastrarMsica.getContentPane().add(txtArtista);
+		frmCadastrarMusica.getContentPane().add(txtArtista);
 		
 		btnVoltar = new JButton("Voltar");
+		btnVoltar.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new TelaInicial(usuario);
-				frmCadastrarMsica.dispose();
+				frmCadastrarMusica.dispose();
 			}
 		});
 		btnVoltar.setBounds(10, 11, 89, 23);
-		frmCadastrarMsica.getContentPane().add(btnVoltar);
+		frmCadastrarMusica.getContentPane().add(btnVoltar);
 
 		btnVoltar.setBounds(10, 11, 89, 23);
-		frmCadastrarMsica.getContentPane().add(btnVoltar);
+		frmCadastrarMusica.getContentPane().add(btnVoltar);
 	}
 }

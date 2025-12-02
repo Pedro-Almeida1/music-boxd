@@ -15,6 +15,7 @@ import br.com.musicboxd.model.Usuario;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Toolkit;
 
 public class TelaMusicasDisponiveis {
 
@@ -56,6 +57,7 @@ public class TelaMusicasDisponiveis {
 		frmMusicasDisponiveis.setBounds(100, 100, 544, 300);
 		frmMusicasDisponiveis.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMusicasDisponiveis.getContentPane().setLayout(null);
+		frmMusicasDisponiveis.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconCadastroMusica.png")));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 45, 510, 176);

@@ -1,6 +1,7 @@
 package br.com.musicboxd.view;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -54,6 +55,7 @@ public class TelaVitrolasDisponiveis {
 		frmVitrolasDisponiveis.setBounds(100, 100, 737, 300);
 		frmVitrolasDisponiveis.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmVitrolasDisponiveis.getContentPane().setLayout(null);
+		frmVitrolasDisponiveis.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconCadastroMusica.png")));
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 45, 703, 176);

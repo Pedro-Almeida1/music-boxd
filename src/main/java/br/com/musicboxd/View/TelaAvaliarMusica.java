@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 
 import br.com.musicboxd.DAO.AvaliacaoDAO.AvaliacaoDAO;
 import br.com.musicboxd.model.Musica;
@@ -44,6 +45,7 @@ public class TelaAvaliarMusica {
 		frmAvaliarMusica.setBounds(100, 100, 393, 183);
 		frmAvaliarMusica.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmAvaliarMusica.getContentPane().setLayout(null);
+		frmAvaliarMusica.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconCadastroMusica.png")));
 		
 		JLabel lblNomeMusica = new JLabel("Música: " + musica.getTitulo());
 		lblNomeMusica.setFont(new Font("Tahoma", Font.PLAIN, 16));

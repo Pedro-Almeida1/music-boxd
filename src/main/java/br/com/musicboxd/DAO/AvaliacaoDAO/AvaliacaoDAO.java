@@ -9,12 +9,14 @@ import br.com.musicboxd.DAO.GenericDAO;
 import br.com.musicboxd.config.HibernateUtil;
 import br.com.musicboxd.model.Musica;
 import br.com.musicboxd.model.Usuario;
+import br.com.musicboxd.model.Vitrola;
 import br.com.musicboxd.model.artistas.Banda;
 import br.com.musicboxd.model.artistas.Cantor;
 import br.com.musicboxd.model.avaliacoes.Avaliacao;
 import br.com.musicboxd.model.avaliacoes.AvaliacaoBanda;
 import br.com.musicboxd.model.avaliacoes.AvaliacaoCantor;
 import br.com.musicboxd.model.avaliacoes.AvaliacaoMusica;
+import br.com.musicboxd.model.avaliacoes.AvaliacaoVitrola;
 
 @SuppressWarnings("rawtypes")
 public class AvaliacaoDAO<T> extends GenericDAO<T> {
@@ -33,6 +35,9 @@ public class AvaliacaoDAO<T> extends GenericDAO<T> {
                 break;
             case "AvaliacaoMusica":
                 classeAvaliada = Musica.class;
+                break;
+            case "AvaliacaoVitrola":
+                classeAvaliada = Vitrola.class;
                 break;
         }
     }
@@ -78,6 +83,9 @@ public class AvaliacaoDAO<T> extends GenericDAO<T> {
                         break;
                     case "AvaliacaoMusica":
                         avaliacao = new AvaliacaoMusica(usuario, nota, (Musica) objeto);
+                        break;
+                    case "AvaliacaoVitrola":
+                        avaliacao = new AvaliacaoVitrola(usuario, nota, (Vitrola) objeto);
                         break;
                 }
                 sessao.persist(avaliacao);

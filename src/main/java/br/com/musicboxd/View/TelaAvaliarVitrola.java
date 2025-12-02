@@ -1,6 +1,7 @@
 package br.com.musicboxd.view;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,6 +43,7 @@ public class TelaAvaliarVitrola {
 		frmAvaliarVitrola.setBounds(100, 100, 393, 243);
 		frmAvaliarVitrola.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmAvaliarVitrola.getContentPane().setLayout(null);
+		frmAvaliarVitrola.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconCadastroMusica.png")));
 		
 		JLabel lblNomeMusica = new JLabel("Vitrola: " + vitrola.getNome());
 		lblNomeMusica.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -91,7 +93,7 @@ public class TelaAvaliarVitrola {
 	}
 	
 	private void avaliar(double nota) {
-		AvaliacaoDAO<AvaliacaoBanda> avaliacaoDAO = new AvaliacaoDAO<>(AvaliacaoBanda.class);
+		AvaliacaoDAO<AvaliacaoVitrola> avaliacaoDAO = new AvaliacaoDAO<>(AvaliacaoVitrola.class);
 	
 		try {
 			avaliacaoDAO.salvarOuAtualizar(vitrola.getId(), usuario, nota, vitrola);

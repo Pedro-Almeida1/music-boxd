@@ -5,6 +5,8 @@ import br.com.musicboxd.model.Usuario;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
 
 public class TelaInicial {
@@ -17,18 +19,19 @@ public class TelaInicial {
 		initialize();
 		this.frmTelaInicial.setVisible(true);
 	}
-	
+
 	private void initialize() {
 		frmTelaInicial = new JFrame();
 		frmTelaInicial.setBounds(100, 100, 432, 305);
 		frmTelaInicial.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTelaInicial.getContentPane().setLayout(null);
-		
+		frmTelaInicial.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/iconCadastroMusica.png")));
+
 		JLabel lblUsuarioNome = new JLabel("Bem vindo(a), " + usuarioLogado.getNome() + "!");
 		lblUsuarioNome.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblUsuarioNome.setBounds(88, 30, 270, 13);
 		frmTelaInicial.getContentPane().add(lblUsuarioNome);
-		
+
 		JButton btnMusicasDisponiveis = new JButton("Músicas Disponíveis");
 		btnMusicasDisponiveis.addActionListener(e -> {
 			new TelaMusicasDisponiveis(usuarioLogado);
@@ -37,7 +40,7 @@ public class TelaInicial {
 		btnMusicasDisponiveis.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnMusicasDisponiveis.setBounds(10, 107, 176, 39);
 		frmTelaInicial.getContentPane().add(btnMusicasDisponiveis);
-		
+
 		JButton btnCadastrarMusica = new JButton("Cadastrar Música");
 		btnCadastrarMusica.addActionListener(e -> {
 			new TelaCadastroMusica(usuarioLogado);
@@ -46,16 +49,27 @@ public class TelaInicial {
 		btnCadastrarMusica.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnCadastrarMusica.setBounds(10, 156, 176, 39);
 		frmTelaInicial.getContentPane().add(btnCadastrarMusica);
-		
-		JButton btnVitrolasDisponiveis = new JButton("Vitrolas disponíveis");	
+
+		JButton btnVitrolasDisponiveis = new JButton("Vitrolas disponíveis");
 		btnVitrolasDisponiveis.addActionListener(e -> {
 			new TelaVitrolasDisponiveis(usuarioLogado);
 			frmTelaInicial.dispose();
 		});
 		btnVitrolasDisponiveis.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnVitrolasDisponiveis.setBounds(204, 134, 176, 39);
+		btnVitrolasDisponiveis.setBounds(209, 107, 176, 39);
 		frmTelaInicial.getContentPane().add(btnVitrolasDisponiveis);
-		
+
+		if (usuarioLogado.getNome().equals("admin")) {
+			JButton btnCadastrarVitrola = new JButton("Cadastrar Vitrola");
+			btnCadastrarVitrola.addActionListener(e -> {
+				frmTelaInicial.dispose();
+				new TelaCadastroVitrola(usuarioLogado);
+			});
+			btnCadastrarVitrola.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			btnCadastrarVitrola.setBounds(209, 156, 176, 39);
+			frmTelaInicial.getContentPane().add(btnCadastrarVitrola);
+		}
+
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(e -> {
 			frmTelaInicial.dispose();
@@ -64,7 +78,7 @@ public class TelaInicial {
 		btnSair.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnSair.setBounds(273, 237, 85, 21);
 		frmTelaInicial.getContentPane().add(btnSair);
-		
+
 		frmTelaInicial.setLocationRelativeTo(null);
 	}
 }
