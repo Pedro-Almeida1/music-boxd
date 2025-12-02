@@ -5,6 +5,7 @@ import org.hibernate.cfg.Configuration;
 
 import br.com.musicboxd.model.Musica;
 import br.com.musicboxd.model.Usuario;
+import br.com.musicboxd.model.Vitrola;
 import br.com.musicboxd.model.artistas.Artista;
 import br.com.musicboxd.model.artistas.Banda;
 import br.com.musicboxd.model.artistas.Cantor;
@@ -12,6 +13,7 @@ import br.com.musicboxd.model.avaliacoes.Avaliacao;
 import br.com.musicboxd.model.avaliacoes.AvaliacaoBanda;
 import br.com.musicboxd.model.avaliacoes.AvaliacaoCantor;
 import br.com.musicboxd.model.avaliacoes.AvaliacaoMusica;
+import br.com.musicboxd.model.avaliacoes.AvaliacaoVitrola;
 
 public class HibernateUtil {
 	private static final SessionFactory sessionFactory = buildSessionFactory();
@@ -38,6 +40,8 @@ public class HibernateUtil {
 			config.addAnnotatedClass(AvaliacaoMusica.class);
 			config.addAnnotatedClass(AvaliacaoBanda.class);
 			config.addAnnotatedClass(AvaliacaoCantor.class);
+			config.addAnnotatedClass(Vitrola.class);
+			config.addAnnotatedClass(AvaliacaoVitrola.class);
 
 			return config.buildSessionFactory();
 		} catch (Exception e) {
